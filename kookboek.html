@@ -1,47 +1,167 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    body {
+      text-align: 
+
+center;
+    }
+  </style>
 <head>
 <meta charset="utf-8">
 <title>Hoe moet ik koken?</title>
 </head>
 
 <body>
-<p id="helloText">Kun je niet koken? Wij helpen, geef hieronder aan wat je wilt gaan doen:<a href="mailto:"></a></p>
+  
+  
 
-<p>
-<form action="http://www.google.com">
-  Ingrediënt 1: <input type="text" name="ing1"><br> <br>
-  Ingrediënt 2: <input type="text" name="ing2"><br> <br>
-  Tijd voor bewerking (in minuten): <input type="number" name="tijd" size="100">
-</p>
+<h1>Welkom bij deze kookboekapplicatie</h1>
+  
+<p 
 
-<p>
+id="welkomsTekst">Kun je niet koken? Wij helpen, geef 
+
+hieronder aan wat je wilt gaan doen:</p>
+
 <form>
-<select name="Bewerking" size="1">
-  <option value="Bakken">Bakken</option>
-  <option value="Braden">Braden</option>
-  <option value="Koken">Koken</option>
-  <option value="Mixen">Mixen</option>
-  <option value="Pocheren">Pocheren</option>
+  <p>
+  
+
+Ingredi&#235nt 1: <input type="text" id="ingre1"><br> 
+
+<br>
+  Ingredi&#235nt 2: <input type="text" 
+
+id="ingre2"><br> <br>
+</p>
+
+<p>Wat wil je met de 
+
+ingredi&#235nten gaan doen?</p>
+<select id="bereiding">
+  
+
+<option selected="bakken">Bakken</option>
+  <option 
+
+selected="braden">Braden</option>
+  <option 
+
+selected="koken">Koken</option>
+  <option 
+
+selected="mixen">Mixen</option>
+  <option 
+
+selected="pocheren">Pocheren</option>
 </select>
-</p>
-
 <p>
- <input type="submit" value="Versturen" onClick="return checkMe()">
- 
-onClick="if(confirm('Format the hard disk?'))
-alert('You are very brave!');
-else alert('A wise decision!')">
-<form action=>
 </p>
+</form>
+Tijd voor bewerking (in minuten): <input 
 
-<script>
-var ingr1 document.getElementById(ing1);
-var ingr2 document.getElementById(ing2);
-var time document.getElementById(tijd);
-var bew  document.getElementById(bewerking);
+type="number" max="180" min="1" id="tijd"> <br> <br>
+<button id="verstuurknop" onclick="getsubmit
 
+()">Verstuur</button>
+
+<h3 id=uitkomst> </h3>
+
+<script 
+
+type="text/javascript">
+
+var ing1 = 
+
+document.getElementById("ingre1");
+var ing2 = 
+
+document.getElementById("ingre2");
+var time = 
+
+document.getElementById("tijd");
+var bereid = 
+
+document.getElementById("bereiding");
+var wijze = 
+
+bereid.options[bereid.selectedIndex].text;
+var 
+
+ikvormingredient = "ERROR";
+
+
+function getsubmit() {
+    if 
+
+(ing1.value != "" && ing2.value != "" && time.value != 
+
+"") {
+        var yes = confirm("Kloppen de volgende 
+
+gegevens? Ingredient 1 is: " + ing1.value + ". Ingredient 
+
+2 is: " + ing2.value + ". Deze ingredienten wil je " + 
+
+time.value + " minuten gaan " + bereid.value + ". \n \n 
+
+Klik OK als deze informatie correct is");
+        if (yes 
+
+== true) {
+            
+            if (wijze == "bakken") 
+
+{
+                ikvormingredient = "Bak";
+            } 
+  
+
+          if (bereid.value == 2) {
+                
+
+ikvormingredient = "Braad";
+            } 
+            if 
+
+(bereid.value == 3) {
+                ikvormingredient = 
+
+"Kook";
+            } 
+            if (bereid.value == 4) {
+ 
+
+               ikvormingredient = "Mix";
+            } 
+    
+
+        if (bereid.value == 5) {
+                
+
+ikvormingredient = "Pocheer";
+            }
+            
+    
+
+        showinstructions();
+        }
+        }
+}
+
+function 
+
+showinstructions(){
+    
+    document.getElementById
+
+("uitkomst").innerHTML = ikvormingredient + " de 
+
+ingredienten " + ing1.value + " en " + ing2.value + " 
+
+gedurende " + time.value + " minuten.";
+}
 </script>
-<form name="myForm">
 </body>
 </html>
