@@ -2,9 +2,7 @@
 <html>
   <style>
     body {
-      text-align: 
-
-center;
+      text-align: center;
     }
   </style>
 <head>
@@ -14,153 +12,71 @@ center;
 
 <body>
   
+  <h1>Welkom bij deze kookboekapplicatie</h1>
   
-
-<h1>Welkom bij deze kookboekapplicatie</h1>
-  
-<p 
-
-id="welkomsTekst">Kun je niet koken? Wij helpen, geef 
-
-hieronder aan wat je wilt gaan doen:</p>
+<p id="welkomsTekst">Kun je niet koken? Wij helpen, geef hieronder aan wat je wilt gaan doen:</p>
 
 <form>
   <p>
-  
-
-Ingredi&#235nt 1: <input type="text" id="ingre1"><br> 
-
-<br>
-  Ingredi&#235nt 2: <input type="text" 
-
-id="ingre2"><br> <br>
+  Ingredi&#235nt 1: <input type="text" id="ingre1"><br> <br>
+  Ingredi&#235nt 2: <input type="text" id="ingre2"><br> <br>
 </p>
 
-<p>Wat wil je met de 
-
-ingredi&#235nten gaan doen?</p>
+<p>Wat wil je met de ingredi&#235nten gaan doen?</p>
 <select id="bereiding">
-  
-
-<option selected="bakken">Bakken</option>
-  <option 
-
-selected="braden">Braden</option>
-  <option 
-
-selected="koken">Koken</option>
-  <option 
-
-selected="mixen">Mixen</option>
-  <option 
-
-selected="pocheren">Pocheren</option>
+  <option selected="bakken">Bakken</option>
+  <option selected="braden">Braden</option>
+  <option selected="koken">Koken</option>
+  <option selected="mixen">Mixen</option>
+  <option selected="pocheren">Pocheren</option>
 </select>
 <p>
 </p>
 </form>
-Tijd voor bewerking (in minuten): <input 
+Tijd voor bewerking (in minuten): <input type="number" max="180" min="1" id="tijd"> <br> <br>
+<button id="verstuurknop" onclick="getsubmit()">Verstuur</button>
 
-type="number" max="180" min="1" id="tijd"> <br> <br>
-<button id="verstuurknop" onclick="getsubmit
+<h3 id=uitkomst>HIERKOMTJEUITKOMST</h3>
 
-()">Verstuur</button>
+<script type="text/javascript">
 
-<h3 id=uitkomst> </h3>
-
-<script 
-
-type="text/javascript">
-
-var ing1 = 
-
-document.getElementById("ingre1");
-var ing2 = 
-
-document.getElementById("ingre2");
-var time = 
-
-document.getElementById("tijd");
-var bereid = 
-
-document.getElementById("bereiding");
-var wijze = 
-
-bereid.options[bereid.selectedIndex].text;
-var 
-
-ikvormingredient = "ERROR";
+var ing1 = document.getElementById("ingre1");
+var ing2 = document.getElementById("ingre2");
+var time = document.getElementById("tijd");
+var bereid = document.getElementById("bereiding");
+var wijze = bereid.options[bereid.selectedIndex].text;
+var ikvormingredient = "ERROR";
 
 
 function getsubmit() {
-    if 
-
-(ing1.value != "" && ing2.value != "" && time.value != 
-
-"") {
-        var yes = confirm("Kloppen de volgende 
-
-gegevens? Ingredient 1 is: " + ing1.value + ". Ingredient 
-
-2 is: " + ing2.value + ". Deze ingredienten wil je " + 
-
-time.value + " minuten gaan " + bereid.value + ". \n \n 
-
-Klik OK als deze informatie correct is");
-        if (yes 
-
-== true) {
+    if (ing1.value != "" && ing2.value != "" && time.value != "") {
+        var yes = confirm("Kloppen de volgende gegevens? Ingredient 1 is: " + ing1.value + ". Ingredient 2 is: " + ing2.value + ". Deze ingredienten wil je " + time.value + " minuten gaan " + bereid.value + ". \n \n Klik OK als deze informatie correct is");
+        if (yes == true) {
             
-            if (wijze == "bakken") 
-
-{
+            if (wijze == "bakken") {
                 ikvormingredient = "Bak";
             } 
-  
-
-          if (bereid.value == 2) {
-                
-
-ikvormingredient = "Braad";
+            if (bereid.value == 2) {
+                ikvormingredient = "Braad";
             } 
-            if 
-
-(bereid.value == 3) {
-                ikvormingredient = 
-
-"Kook";
+            if (bereid.value == 3) {
+                ikvormingredient = "Kook";
             } 
             if (bereid.value == 4) {
- 
-
-               ikvormingredient = "Mix";
+                ikvormingredient = "Mix";
             } 
-    
-
-        if (bereid.value == 5) {
-                
-
-ikvormingredient = "Pocheer";
+            if (bereid.value == 5) {
+                ikvormingredient = "Pocheer";
             }
             
-    
-
-        showinstructions();
+            showinstructions();
         }
         }
 }
 
-function 
-
-showinstructions(){
+function showinstructions(){
     
-    document.getElementById
-
-("uitkomst").innerHTML = ikvormingredient + " de 
-
-ingredienten " + ing1.value + " en " + ing2.value + " 
-
-gedurende " + time.value + " minuten.";
+    document.getElementById("uitkomst").innerHTML = ikvormingredient + " de ingredienten " + ing1.value + " en " + ing2.value + " gedurende " + time.value + " minuten.";
 }
 </script>
 </body>
